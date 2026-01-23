@@ -1,6 +1,7 @@
-import { Client, Collection, GatewayIntentBits, Partials } from 'discord.js';
+import { Client, Collection, GatewayIntentBits, Partials, TextChannel } from 'discord.js';
 import runEventHandler from './handlers/event.handler';
 import runCommandHandler from './handlers/command.handler';
+import logger from '@/configs/logger.config';
 
 export interface BotClient extends Client {
   commands: Collection<string, any>;
@@ -26,5 +27,10 @@ export default async (token: string, clientID: string) => {
   runEventHandler(client);
   runCommandHandler(client, token, clientID);
   await client.login(token);
+  const channels = await client.channels.fetch(process.env.MAIN_CHANNEL_ID as string);
+  if (channels?.isTextBased()) {
+    const c = channels as TextChannel;
+    logger.info(`Main channel: #${c.name} in ${c.guild.name}`);
+  }
   return client;
 };

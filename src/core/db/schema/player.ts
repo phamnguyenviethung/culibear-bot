@@ -3,6 +3,7 @@ import { pgTable, text, timestamp } from 'drizzle-orm/pg-core';
 export const player = pgTable('players', {
   id: text().primaryKey(),
   name: text(),
+  dob: timestamp(),
   createdAt: timestamp().defaultNow(),
   updatedAt: timestamp().defaultNow()
 });
