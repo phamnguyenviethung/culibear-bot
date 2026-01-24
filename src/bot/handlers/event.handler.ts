@@ -4,7 +4,7 @@ import path from 'path';
 import { BotClient } from '..';
 
 export default async (client: BotClient) => {
-  const foldersPath = path.join(__dirname, '../events');
+  const foldersPath = path.resolve(__dirname, '../events');
   console.log('Folder path: ', foldersPath);
 
   let count = 0;

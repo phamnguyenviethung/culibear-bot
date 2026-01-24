@@ -5,7 +5,7 @@ import path from 'path';
 import { BotClient } from '..';
 
 export default async (client: BotClient, token: string, clientID: string) => {
-  const foldersPath = path.join(__dirname, '../commands');
+  const foldersPath = path.resolve(__dirname, '../commands');
 
   const commandsArray: any = [];
   let count = 0;
