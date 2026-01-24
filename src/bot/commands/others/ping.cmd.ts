@@ -1,4 +1,4 @@
-import { CommandInteractionParams } from '@/bot/events/interactionCreate.event';
+import { CommandInteractionParams } from '@/bot/events/interactionCreate.event.js';
 import { SlashCommandBuilder } from 'discord.js';
 
 module.exports = {

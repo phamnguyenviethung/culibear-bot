@@ -1,7 +1,7 @@
 import { Client, Collection, GatewayIntentBits, Partials, TextChannel } from 'discord.js';
-import runEventHandler from './handlers/event.handler';
-import runCommandHandler from './handlers/command.handler';
-import logger from '@/configs/logger.config';
+import runEventHandler from './handlers/event.handler.js';
+import runCommandHandler from './handlers/command.handler.js';
+import logger from '@/configs/logger.config.js';
 
 export interface BotClient extends Client {
   commands: Collection<string, any>;

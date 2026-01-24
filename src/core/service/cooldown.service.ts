@@ -1,5 +1,5 @@
-import { BotClient } from '@/bot';
-import appConfig from '@/configs/app.config';
+import { BotClient } from '@/bot/index.js';
+import appConfig from '@/configs/app.config.js';
 import { Collection, CommandInteraction } from 'discord.js';
 
 class CooldownService {

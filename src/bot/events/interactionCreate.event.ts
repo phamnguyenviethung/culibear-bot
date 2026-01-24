@@ -1,14 +1,14 @@
-import logger from '@/configs/logger.config';
+import logger from '@/configs/logger.config.js';
 import { AutocompleteInteraction, ChatInputCommandInteraction, CommandInteraction } from 'discord.js';
-import { BotClient } from '..';
-import cooldownService from '@/core/service/cooldown.service';
+import { BotClient } from '../index.js';
+import cooldownService from '@/core/service/cooldown.service.js';
 
 export interface CommandInteractionParams {
   client: BotClient;
   interaction: ChatInputCommandInteraction;
 }
 
-module.exports = async (client: BotClient, interaction: CommandInteraction | AutocompleteInteraction) => {
+export default async (client: BotClient, interaction: CommandInteraction | AutocompleteInteraction) => {
   if (interaction.isChatInputCommand()) {
     const cmdName = interaction.commandName;
     try {

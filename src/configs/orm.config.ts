@@ -2,7 +2,7 @@
 import { drizzle } from 'drizzle-orm/node-postgres';
 import dotenv from 'dotenv';
 import { Logger } from 'drizzle-orm';
-import logger from './logger.config';
+import logger from './logger.config.js';
 
 dotenv.config({
   path: process.env.NODE_ENV === 'production' ? '.env' : '.env.dev'

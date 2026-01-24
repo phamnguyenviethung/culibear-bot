@@ -1,7 +1,7 @@
-import loginToBot from '@/bot';
-import logger from '@/configs/logger.config';
+import loginToBot from '@/bot/index.js';
+import logger from '@/configs/logger.config.js';
 import dotenv from 'dotenv';
-import appConfig from './configs/app.config';
+import appConfig from '@/configs/app.config.js';
 
 dotenv.config({
   path: process.env.NODE_ENV === 'production' ? '.env' : '.env.dev'

@@ -1,4 +1,4 @@
-import logger from '@/configs/logger.config';
+import logger from '@/configs/logger.config.js';
 import { Client } from 'discord.js';
 export interface IDiscordMessageService {
   sendMessageToUser(client: Client, userId: string, content: string): Promise<void>;

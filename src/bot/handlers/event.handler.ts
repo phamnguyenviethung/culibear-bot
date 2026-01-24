@@ -1,7 +1,12 @@
-import logger from '@/configs/logger.config';
+import logger from '@/configs/logger.config.js';
 import { readdirSync } from 'fs';
 import path from 'path';
-import { BotClient } from '..';
+import { BotClient } from '../index.js';
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export default async (client: BotClient) => {
   const foldersPath = path.resolve(__dirname, '../events');

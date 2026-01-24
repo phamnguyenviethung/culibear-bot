@@ -1,6 +1,9 @@
 {
-  "watch": ["src", ".env"],
+  "watch": [
+    "src",
+    ".env"
+  ],
   "ext": ".ts,.js",
   "ignore": [],
-  "exec": "cross-env NODE_ENV=development tsx ./src/main.ts"
+  "exec": "cross-env NODE_ENV=development tsx watch ./src/main.ts"
 }

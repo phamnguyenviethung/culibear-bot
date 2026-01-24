@@ -1,6 +1,6 @@
 import { migrate } from 'drizzle-orm/node-postgres/migrator';
-import db from '@/configs/orm.config';
-import logger from '@/configs/logger.config';
+import db from '@/configs/orm.config.js';
+import logger from '@/configs/logger.config.js';
 
 /**
  * Run database migrations
