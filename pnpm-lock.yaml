@@ -14,6 +14,9 @@ importers:
       cors:
         specifier: ^2.8.5
         version: 2.8.5
+      cross-env:
+        specifier: ^7.0.3
+        version: 7.0.3
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
@@ -66,9 +69,6 @@ importers:
       '@types/pg':
         specifier: ^8.15.4
         version: 8.15.4
-      cross-env:
-        specifier: ^7.0.3
-        version: 7.0.3
       eslint:
         specifier: ^9.26.0
         version: 9.26.0
