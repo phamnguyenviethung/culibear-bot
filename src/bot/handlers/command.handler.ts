@@ -5,13 +5,17 @@ import path from 'path';
 import { BotClient } from '..';
 
 export default async (client: BotClient, token: string, clientID: string) => {
-  const foldersPath = path.resolve(__dirname, '../commands');
+  const basePath =
+    process.env.NODE_ENV === 'production' ? path.resolve(process.cwd(), 'dist') : path.resolve(process.cwd(), 'src');
+  const foldersPath = path.resolve(basePath, 'bot/commands');
   const commandsArray: any = [];
   let count = 0;
   let lockedCmd = 0;
 
   for (const dir of readdirSync(foldersPath)) {
-    const commandFiles = readdirSync(`${foldersPath}/${dir}`).filter((file) => file.endsWith('.cmd.ts') || file.endsWith('.cmd.js'));
+    const commandFiles = readdirSync(`${foldersPath}/${dir}`).filter(
+      (file) => file.endsWith('.cmd.ts') || file.endsWith('.cmd.js')
+    );
     for (const file of commandFiles) {
       const filePath = path.join(foldersPath, dir, file);
       const commandModule = await import(filePath);

@@ -4,7 +4,9 @@ import path from 'path';
 import { BotClient } from '..';
 
 export default async (client: BotClient) => {
-  const foldersPath = path.resolve(__dirname, '../events');
+  const basePath =
+    process.env.NODE_ENV === 'production' ? path.resolve(process.cwd(), 'dist') : path.resolve(process.cwd(), 'src');
+  const foldersPath = path.resolve(basePath, 'bot/events');
 
   let count = 0;
   const files = readdirSync(foldersPath);
