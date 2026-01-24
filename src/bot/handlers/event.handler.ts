@@ -5,6 +5,7 @@ import { BotClient } from '..';
 
 export default async (client: BotClient) => {
   const foldersPath = path.join(__dirname, '../events');
+  console.log(foldersPath);
 
   let count = 0;
   const files = readdirSync(foldersPath);
