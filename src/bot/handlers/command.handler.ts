@@ -11,7 +11,7 @@ export default async (client: BotClient, token: string, clientID: string) => {
   let lockedCmd = 0;
 
   for (const dir of readdirSync(foldersPath)) {
-    const commandFiles = readdirSync(`${foldersPath}/${dir}`).filter((file) => file.endsWith('.cmd.ts'));
+    const commandFiles = readdirSync(`${foldersPath}/${dir}`).filter((file) => file.endsWith('.cmd.ts') || file.endsWith('.cmd.js'));
     for (const file of commandFiles) {
       const filePath = path.join(foldersPath, dir, file);
       const commandModule = await import(filePath);
