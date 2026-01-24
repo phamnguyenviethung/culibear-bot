@@ -6,6 +6,7 @@ import { BotClient } from '..';
 export default async (client: BotClient) => {
   const basePath =
     process.env.NODE_ENV === 'production' ? path.resolve(process.cwd(), 'dist/src') : path.resolve(process.cwd(), 'src');
+  console.log(basePath);
   const foldersPath = path.join(basePath, '/bot/events');
 
   let count = 0;
