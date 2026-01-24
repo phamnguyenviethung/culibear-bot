@@ -13,7 +13,11 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "tsx src/core/db/migrate.ts",
     "db:push": "drizzle-kit push",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "docker:dev": "docker build --target development -t culibear-bot:dev . && docker run --env-file .env.dev culibear-bot:dev",
+    "docker:prod": "docker build --target production -t culibear-bot:prod . && docker run --env-file .env culibear-bot:prod",
+    "docker:build:dev": "docker build --target development -t culibear-bot:dev .",
+    "docker:build:prod": "docker build --target production -t culibear-bot:prod ."
   },
   "keywords": [],
   "author": "",
