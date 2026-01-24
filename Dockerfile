@@ -7,7 +7,14 @@ WORKDIR /app
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
 # ============================================
-# Dependencies (prod)
+# Dependencies (full - for build)
+# ============================================
+FROM base AS deps
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
+
+# ============================================
+# Dependencies (prod only)
 # ============================================
 FROM base AS deps-prod
 COPY package.json pnpm-lock.yaml ./
@@ -17,8 +24,7 @@ RUN pnpm install --prod --frozen-lockfile
 # Build
 # ============================================
 FROM base AS build
-COPY package.json pnpm-lock.yaml ./
-COPY --from=deps-prod /app/node_modules ./node_modules
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN pnpm run build
 
