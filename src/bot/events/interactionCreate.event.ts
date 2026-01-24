@@ -8,7 +8,7 @@ export interface CommandInteractionParams {
   interaction: ChatInputCommandInteraction;
 }
 
-export default async (client: BotClient, interaction: CommandInteraction | AutocompleteInteraction) => {
+module.exports = async (client: BotClient, interaction: CommandInteraction | AutocompleteInteraction) => {
   if (interaction.isChatInputCommand()) {
     const cmdName = interaction.commandName;
     try {
