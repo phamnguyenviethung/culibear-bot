@@ -1,15 +1,12 @@
 #!/bin/sh
 set -e
 
-echo "Starting application in $NODE_ENV mode..."
+echo "NODE_ENV=$NODE_ENV"
 
 if [ "$NODE_ENV" = "production" ]; then
-    echo "Running database migrations..."
-    node dist/core/db/migrate.js
-else
-    echo "Running database push..."
-    pnpm run db:push
+    echo "Running Drizzle migrations..."
+    pnpm drizzle-kit migrate
 fi
 
-echo "Database setup completed. Starting application..."
+echo "Starting application..."
 exec "$@"
