@@ -5,11 +5,8 @@ import path from 'path';
 import { BotClient } from '..';
 
 export default async (client: BotClient, token: string, clientID: string) => {
-  const basePath =
-    process.env.NODE_ENV === 'production'
-      ? path.resolve(process.cwd(), 'dist/src')
-      : path.resolve(process.cwd(), 'src');
-  const foldersPath = path.join(basePath, '/bot/commands');
+  const foldersPath = path.join(__dirname, '../commands');
+
   const commandsArray: any = [];
   let count = 0;
   let lockedCmd = 0;
