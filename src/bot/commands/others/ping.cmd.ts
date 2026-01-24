@@ -1,7 +1,7 @@
 import { CommandInteractionParams } from '@/bot/events/interactionCreate.event.js';
 import { SlashCommandBuilder } from 'discord.js';
 
-module.exports = {
+export default {
   data: new SlashCommandBuilder().setName('ping').setDescription('Kiểm tra độ trễ'),
   async run({ client, interaction }: CommandInteractionParams) {
     await interaction.followUp(
