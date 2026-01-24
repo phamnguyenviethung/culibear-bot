@@ -1,7 +1,7 @@
 import { CommandInteractionParams } from '@/bot/events/interactionCreate.event';
 import { SlashCommandBuilder } from 'discord.js';
 
-export default {
+module.exports = {
   data: new SlashCommandBuilder()
     .setName('avatar')
     .setDescription('Xem avatar của bạn hoặc người khác')
