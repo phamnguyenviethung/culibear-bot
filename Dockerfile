@@ -31,7 +31,7 @@ RUN pnpm run build
 # ============================================
 # Production
 # ============================================
-FROM node:22-alpine AS production
+FROM base AS production
 WORKDIR /app
 
 ENV NODE_ENV=production
