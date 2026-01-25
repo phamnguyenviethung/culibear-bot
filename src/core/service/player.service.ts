@@ -4,6 +4,9 @@ import { asc, eq, isNotNull } from 'drizzle-orm';
 import { player, SelectPlayer } from '../db/schema/player.js';
 import BirthdayDetailResponse from '../dto/response/BirthdayListResponse.dto.js';
 import vietnamTime, { isToday } from '../helpers/time.js';
+import discordMessageService from './discordMessage.service.js';
+import { client } from '@/main.js';
+import { userMention } from 'discord.js';
 class PlayerService {
   async createPlayer(discordID: string, name: string): Promise<boolean> {
     const result = await db
@@ -62,6 +65,21 @@ class PlayerService {
         dayLeft: dayLeftToBirthday
       };
     });
+  }
+
+  async sendBirthdayMessageJob(): Promise<void> {
+    const birthdays = await this.getAllBirthdays();
+    const todayBirthdays = birthdays.filter((birthday) => birthday.isToday);
+    if (todayBirthdays.length > 0) {
+      const msgPromise = todayBirthdays.map(async (birthday) => {
+        const msg = `@here Hôm nay là sinh nhật của ${userMention(birthday.playerID)}`;
+
+        return discordMessageService.sendToMainChannel(client, msg);
+      });
+      await Promise.all(msgPromise);
+    } else {
+      logger.info('No birthdays today');
+    }
   }
 }
 

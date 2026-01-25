@@ -45,16 +45,17 @@
   "dependencies": {
     "axios": "^1.11.0",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "dayjs": "^1.11.13",
     "discord.js": "^14.19.3",
     "dotenv": "^16.5.0",
+    "drizzle-kit": "^0.31.8",
     "drizzle-orm": "^0.45.1",
     "express": "^5.1.0",
     "lodash": "^4.17.21",
     "morgan": "^1.10.1",
+    "node-cron": "^4.2.1",
     "pg": "^8.17.2",
-    "cross-env": "^7.0.3",
-    "winston": "^3.17.0",
-    "drizzle-kit": "^0.31.8"
+    "winston": "^3.17.0"
   }
 }
