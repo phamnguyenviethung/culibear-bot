@@ -8,6 +8,13 @@
       "when": 1769213929407,
       "tag": "0000_worried_anthem",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1769303894518,
+      "tag": "0001_brief_oracle",
+      "breakpoints": true
     }
   ]
 }

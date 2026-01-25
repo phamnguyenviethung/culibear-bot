@@ -2,6 +2,7 @@ import logger from '@/configs/logger.config.js';
 import { AutocompleteInteraction, ChatInputCommandInteraction, CommandInteraction } from 'discord.js';
 import { BotClient } from '../index.js';
 import cooldownService from '@/core/service/cooldown.service.js';
+import playerService from '@/core/service/player.service.js';
 
 export interface CommandInteractionParams {
   client: BotClient;
@@ -14,6 +15,8 @@ export default async (client: BotClient, interaction: CommandInteraction | Autoc
     try {
       const command = client.interactions.get(cmdName);
       if (!command) return interaction.reply('Lệnh không hợp lệ');
+
+      await playerService.createPlayer(interaction.user.id, interaction.user.username);
 
       if (!command.noDefer) await interaction.deferReply();
 

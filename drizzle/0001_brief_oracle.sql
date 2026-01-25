@@ -1,0 +1,1 @@
+ALTER TABLE "players" ALTER COLUMN "dob" SET DATA TYPE timestamp with time zone;

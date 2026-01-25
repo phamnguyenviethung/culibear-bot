@@ -7,4 +7,8 @@ dayjs.extend(timezone);
 
 const vietnamTime = (t?: string | number | Date) => dayjs(t).locale('vi').tz('Asia/Ho_Chi_Minh');
 
+export const isToday = (d: Date) => {
+  return vietnamTime(d).isSame(vietnamTime(), 'day');
+};
+
 export default vietnamTime;
