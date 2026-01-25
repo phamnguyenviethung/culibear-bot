@@ -15,7 +15,7 @@ class PlayerService {
           name: name
         }
       });
-    logger.info(`Player created: ${discordID} - ${name}`);
+    logger.info(`Player profile synced: ${discordID} - ${name}`);
     return result.rowCount !== null && result.rowCount > 0;
   }
 

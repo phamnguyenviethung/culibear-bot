@@ -30,6 +30,7 @@ export default {
     )
     .addSubcommand((subcommand) => subcommand.setName('xoa').setDescription('Xóa sinh nhật'))
     .addSubcommand((subcommand) => subcommand.setName('danhsach').setDescription('Xem danh sách sinh nhật')),
+  cooldown: 1,
   async run({ interaction }: CommandInteractionParams) {
     const subcommand = interaction.options.getSubcommand();
     if (!subcommand) {
