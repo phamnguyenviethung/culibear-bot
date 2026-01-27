@@ -84,7 +84,8 @@ class PlayerService {
 
   async remindBirthdayMessageJob(): Promise<void> {
     const birthdays = await this.getAllBirthdays();
-    const upcomingBirthdays = birthdays.filter((birthday) => !birthday.isToday && birthday.dayLeft <= 60);
+    const nonTodayBirthdays = birthdays.filter((birthday) => !birthday.isToday);
+    const upcomingBirthdays = nonTodayBirthdays.filter((birthday) => birthday.dayLeft <= 60);
 
     if (upcomingBirthdays.length > 0) {
       const lines = upcomingBirthdays.map(
@@ -94,8 +95,14 @@ class PlayerService {
 
       await discordMessageService.sendToMainChannel(client, msg);
       logger.info(`Reminded ${upcomingBirthdays.length} upcoming birthdays`);
+    } else if (nonTodayBirthdays.length > 0) {
+      const closest = nonTodayBirthdays.reduce((min, b) => (b.dayLeft < min.dayLeft ? b : min));
+      const msg = `📅 Sinh nhật của ${userMention(closest.playerID)} - còn ${closest.dayLeft} ngày (${closest.strDate})`;
+
+      await discordMessageService.sendToMainChannel(client, msg);
+      logger.info(`Reminded closest birthday: ${closest.playerID}`);
     } else {
-      logger.info('No upcoming birthdays in next 60 days');
+      logger.info('No upcoming birthdays found');
     }
   }
 }
