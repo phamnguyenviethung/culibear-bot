@@ -81,6 +81,23 @@ class PlayerService {
       logger.info('No birthdays today');
     }
   }
+
+  async remindBirthdayMessageJob(): Promise<void> {
+    const birthdays = await this.getAllBirthdays();
+    const upcomingBirthdays = birthdays.filter((birthday) => !birthday.isToday && birthday.dayLeft <= 60);
+
+    if (upcomingBirthdays.length > 0) {
+      const lines = upcomingBirthdays.map(
+        (birthday) => `- ${userMention(birthday.playerID)}: còn ${birthday.dayLeft} ngày (${birthday.strDate})`
+      );
+      const msg = `📅 **Sinh nhật sắp tới gần nhất:**\n${lines.join('\n')}`;
+
+      await discordMessageService.sendToMainChannel(client, msg);
+      logger.info(`Reminded ${upcomingBirthdays.length} upcoming birthdays`);
+    } else {
+      logger.info('No upcoming birthdays in next 60 days');
+    }
+  }
 }
 
 export default new PlayerService();
