@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "src/main.ts",
   "scripts": {
+    "prepare": "test -d node_modules/husky && husky install || echo \"husky is not installed\"",
     "dev": "npx nodemon",
     "build": "rimraf ./dist && tsc && tsc-alias",
     "start": "cross-env NODE_ENV=production tsx ./src/main.ts",
@@ -23,6 +24,8 @@
   "type": "module",
   "description": "",
   "devDependencies": {
+    "@commitlint/cli": "^20.3.1",
+    "@commitlint/config-conventional": "^20.3.1",
     "@eslint/js": "^9.26.0",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
