@@ -1,9 +1,9 @@
 import { CommandInteractionParams } from '@/bot/events/interactionCreate.event.js';
-import playerService from '@/core/service/player.service.js';
+import birthdayService from '@/core/service/birthday.service.js';
 import { bold, italic, SlashCommandBuilder } from 'discord.js';
 
 const getBirthDayText = async () => {
-  const birthdays = await playerService.getAllBirthdays();
+  const birthdays = await birthdayService.getAllBirthdays();
   let text = '';
   for (const birthday of birthdays) {
     const name = bold(birthday.name ?? 'Unknown');
@@ -48,7 +48,7 @@ export default {
           if (!day || !month || !year) {
             return interaction.followUp({ content: 'Vui lòng nhập đầy đủ thông tin', ephemeral: true });
           }
-          const result = await playerService.addBirthday(user.id, day, month, year);
+          const result = await birthdayService.addBirthday(user.id, day, month, year);
           if (result) {
             await interaction.followUp('Ghi nhớ sinh nhật thành công');
           } else {
@@ -58,7 +58,7 @@ export default {
         break;
       case 'xoa':
         {
-          const result = await playerService.removeBirthday(user.id);
+          const result = await birthdayService.removeBirthday(user.id);
           if (result) {
             await interaction.followUp('Xóa sinh nhật thành công');
           } else {
