@@ -16,7 +16,8 @@ export default async (token: string, clientID: string) => {
       GatewayIntentBits.GuildMessages,
       GatewayIntentBits.GuildMessageReactions,
       GatewayIntentBits.MessageContent,
-      GatewayIntentBits.GuildPresences
+      GatewayIntentBits.GuildPresences,
+      GatewayIntentBits.GuildMembers
     ],
     partials: [Partials.Message, Partials.User, Partials.Channel, Partials.GuildMember]
   }) as BotClient;

@@ -1,5 +1,5 @@
 import logger from '@/configs/logger.config.js';
-import birthdayJob from './birhtday.js';
+import birthdayJob from './birhtday.job.js';
 
 export default () => {
   birthdayJob();
